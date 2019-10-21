@@ -53,17 +53,17 @@ router.post('/login', (req, res) => {
 //chef logout
 //api/auth/logout
 router.get('/logout', (req, res) => {
-    if (token) {
-      token.destroy(err => {
-        if (err) {
-          res.status(500).json({ message: 'Logout failed' });
-        } else {
-          res.status(200).json({ message: 'Thank you for visiting' });
-        }
-      });
-    } else {
-      res.status(200).json({ message: 'Thank you for visiting' });
-    }
+  if (token) {
+    token.destroy(err => {
+      if (err) {
+        res.status(500).json({ message: 'Logout failed' });
+      } else {
+        res.status(200).json({ message: 'Thanks for visiting' });
+      }
+    });
+  } else {
+    res.status(200).json({ message: 'Thanks for visiting' });
+  }
 });
 
 function generateToken(user) {
