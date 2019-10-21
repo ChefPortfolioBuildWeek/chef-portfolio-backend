@@ -1,6 +1,6 @@
 
 exports.up = function(knex) {
-    return knex.schema.createTable('post', tbl => {
+    return knex.schema.createTable('posts', tbl => {
         tbl.increments();
         tbl.string('title', 128).notNullable()
         tbl.json('category').notNullable()
@@ -12,5 +12,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-    return knex.schema.dropTableIfExists('post');
+    return knex.schema.dropTableIfExists('posts');
 };
