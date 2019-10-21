@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const secrets = require('../config/secrets');
+const secrets = require('../config/secrets')
 
 const Users = require("../users/users-model.js");
 
@@ -15,11 +15,11 @@ router.post('/register', (req, res) => {
   Users.add(user)
     .then(saved => {
       const token = generateToken(saved);
-      console.log("token", saved);
+      console.log('token', saved);
       res.status(201).json({ message: `Welcome ${saved.username}!`, token });
     })
     .catch(error => {
-      console.log("random");
+      console.log('add user');
       res.status(500).json(error);
     });
 });
@@ -52,25 +52,25 @@ router.post('/login', (req, res) => {
 
 //chef logout
 //api/auth/logout
-router.get('/logout', (req, res) => {
-  if (token) {
-    token.destroy(err => {
-      if (err) {
-        res.status(500).json({ message: 'Logout failed' });
-      } else {
-        res.status(200).json({ message: 'Thanks for visiting' });
-      }
-    });
-  } else {
-    res.status(200).json({ message: 'Thanks for visiting' });
-  }
-});
+// router.get('/logout', (req, res) => {
+//   if (token) {
+//     token.destroy(err => {
+//       if (err) {
+//         res.status(500).json({ message: 'Logout failed' });
+//       } else {
+//         res.status(200).json({ message: 'Thanks for visiting' });
+//       }
+//     });
+//   } else {
+//     res.status(200).json({ message: 'Thanks for visiting' });
+//   }
+// });
 
 function generateToken(user) {
     const payload = {
       subject: user.id,
       username: user.username,
-      department: user.department
+      // department: user.department
     };
   
     const options = {
