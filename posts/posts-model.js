@@ -1,7 +1,7 @@
 const db = require('../database/dbConfig');
 
 module.exports = {
-    getPost,
+    getPosts,
     add,
     getBy,
     getByUsername,
@@ -9,26 +9,26 @@ module.exports = {
     update
 };
 
-function getPost() {
-    return db('post');
+function getPosts() {
+    return db('posts');
 }
 
 function getByUsername(username) {
-    return db('post').where({ username });
+    return db('posts').where({ username });
 }
   
 function getById(id) {
-    return db('post').where({ id });
+    return db('posts').where({ id });
 }
   
 function getBy(filter) {
-    return db('post')
+    return db('posts')
       .where(filter)
       .first();
 }
   
 function add(post) {
-    return db('post')
+    return db('posts')
       .insert(post)
       .then(ids => {
         return getById(ids[0]);
@@ -36,13 +36,13 @@ function add(post) {
 }
   
 function remove(id) {
-    return db('post')
+    return db('posts')
       .where("id", id)
       .del();
 }
   
 function update(id, changes) {
-    return db('post')
+    return db('posts')
       .where({ id: id })
       .update(changes)
       .then(count => (count > 0 ? getById(id) : null));

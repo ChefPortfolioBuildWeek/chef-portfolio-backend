@@ -4,7 +4,7 @@ const restricted = require('../auth/restricted-middleware');
 
 //get all posts
 router.get('/', (req, res) => {
-    Posts.getPost()
+    Posts.getPosts()
     .then(post => {
         res.status(200).json(post);
     })
