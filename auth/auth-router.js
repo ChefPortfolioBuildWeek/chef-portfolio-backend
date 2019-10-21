@@ -1,31 +1,32 @@
 const router = require('express').Router();
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const secrets = require('../config/secrets');
 
-const Users = require('../users/users-model');
+const Users = require("../users/users-model.js");
 
 //register a chef!
 ///api/auth/register
 router.post('/register', (req, res) => {
-    let user = req.body;
-    const hash = bcrypt.hashSync(user.password, 10);
-    user.password = hash;
+  const user = req.body;
+  const hash = bcrypt.hashSync(user.password, 10);
+  user.password = hash;
 
-    Users.add(user)
+  Users.add(user)
     .then(saved => {
       const token = generateToken(saved);
-      console.log('token', saved);
+      console.log("token", saved);
       res.status(201).json({ message: `Welcome ${saved.username}!`, token });
     })
     .catch(error => {
-      console.log('add user');
+      console.log("random");
       res.status(500).json(error);
     });
-})
+});
 
 //chef login
-router.post("/login", (req, res) => {
+//api/auth/login
+router.post('/login', (req, res) => {
     let { username, password } = req.body;
   
     Users.findBy({ username })
@@ -48,6 +49,7 @@ router.post("/login", (req, res) => {
 });
 
 //chef logout
+//api/auth/logout
 router.get('/logout', (req, res) => {
     if (token) {
       token.destroy(err => {
