@@ -26,6 +26,23 @@ router.post('/create', restricted, (req, res) => {
       .catch(err => {
         res.status(500).json(err);
       });
-  });
+});
+
+//update a post
+// /api/posts/update/id
+router.put("/update/:id", restricted, (req, res) => {
+    const id = req.params.id;
+    const action = req.body;
+  
+    Posts.update(id, action)
+      .then(updated => {
+        res.status(200).json(updated);
+      })
+      .catch(error => {
+        res.status(500).json({
+          error: "The information could not be modified"
+        });
+    });
+});
 
 module.exports = router;
