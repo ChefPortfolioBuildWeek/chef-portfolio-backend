@@ -6,6 +6,7 @@ const secrets = require('../config/secrets');
 const Users = require('../users/users-model');
 
 //register a chef!
+///api/auth/register
 router.post('/register', (req, res) => {
     let user = req.body;
     const hash = bcrypt.hashSync(user.password, 10);
