@@ -40,9 +40,23 @@ router.put("/update/:id", restricted, (req, res) => {
       })
       .catch(error => {
         res.status(500).json({
-          error: "The information could not be modified"
+          error: 'The information could not be modified'
         });
     });
+});
+
+//get post by username
+// /api/posts/username
+router.get('/:username', restricted, (req, res) => {
+    let username = req.params.username;
+  
+    Posts.getByUsername(username)
+      .then(post => {
+        res.status(201).send(post);
+      })
+      .catch(err => {
+        res.status(401).json({ error: 'User does not exist' });
+      });
 });
 
 module.exports = router;
