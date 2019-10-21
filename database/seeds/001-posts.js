@@ -1,10 +1,10 @@
 
 exports.seed = function(knex) {
   // Deletes ALL existing entries
-  return knex('post').del()
+  return knex('posts').truncate()
     .then(function () {
       // Inserts seed entries
-      return knex('post').insert([
+      return knex('posts').insert([
         {title: 'Spicy Vegan Potato Curry',
          category: 'Main Dishes',
          imgURL: 'https://images.media-allrecipes.com/userphotos/720x405/7123953.jpg',
