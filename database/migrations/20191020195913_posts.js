@@ -3,7 +3,7 @@ exports.up = function(knex) {
     return knex.schema.createTable('posts', tbl => {
         tbl.increments();
         tbl.string('title', 128).notNullable()
-        tbl.json('category').notNullable()
+        tbl.string('category').notNullable()
         tbl.string('description', 128).notNullable()
         tbl.string('imgURL', 128);
         tbl.string('username', 128);
