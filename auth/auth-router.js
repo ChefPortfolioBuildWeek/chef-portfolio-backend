@@ -24,6 +24,8 @@ router.post('/register', (req, res) => {
     });
 });
 
+
+
 //chef login
 //api/auth/login
 router.post('/login', (req, res) => {
