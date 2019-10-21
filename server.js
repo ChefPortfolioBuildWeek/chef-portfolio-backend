@@ -2,11 +2,12 @@ const express = require('express')
 const helmet = require('helmet')
 const cors = require('cors')
 //import routes
-
-
-//routes go here
+const authRouter = require('./users/auth-router');
 
 const server = express();
+
+//routes go here
+server.use('api/auth', authRouter);
 
 server.use(helmet());
 server.use(cors());
