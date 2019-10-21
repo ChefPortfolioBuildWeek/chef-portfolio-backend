@@ -4,7 +4,7 @@ exports.up = function(knex) {
         tbl.increments();
         tbl.string('title', 128).notNullable()
         tbl.string('category').notNullable()
-        tbl.string('description', 128).notNullable()
+        tbl.string('description', 500).notNullable()
         tbl.string('imgURL', 128);
         tbl.string('username', 128);
         tbl.string('location', 128);
