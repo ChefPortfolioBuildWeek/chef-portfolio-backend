@@ -19,6 +19,7 @@ router.post('/create', restricted, (req, res) => {
     let post = req.body;
     Posts.add(post)
       .then(info => {
+          console.log(info)
         res.status(201).json({
           ...info
         });
