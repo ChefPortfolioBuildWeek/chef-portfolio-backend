@@ -30,7 +30,7 @@ router.post('/create', restricted, (req, res) => {
 
 //update a post
 // /api/posts/update/id
-router.put("/update/:id", restricted, (req, res) => {
+router.put('/update/:id', restricted, (req, res) => {
     const id = req.params.id;
     const action = req.body;
   
