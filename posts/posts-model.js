@@ -29,7 +29,7 @@ function getBy(filter) {
   
 function add(post) {
     return db('posts')
-      .insert(post, 'id')
+      .insert(post)
       .then(ids => {
         return getById(ids[0]);
     });
@@ -42,7 +42,7 @@ function add(post) {
   
 function remove(id) {
     return db('posts')
-      .where("id", id)
+      .where('id', id)
       .del();
 }
   
