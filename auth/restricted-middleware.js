@@ -4,6 +4,7 @@ const secrets = require('../config/secrets');
 
 module.exports = (req, res, next) => {
   const token = req.headers.authorization;
+  console.log('inside middleware')
   if(token) {
     //check that token is valid
     jwt.verify(token, secrets.jwtSecret, (err, decodedToken) => {
@@ -14,6 +15,7 @@ module.exports = (req, res, next) => {
       } else {
         //token is good
         req.user = {username: decodedToken.username};
+        
         next();
       }
     })

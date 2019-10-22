@@ -52,19 +52,19 @@ router.post('/login', (req, res) => {
 
 //chef logout
 //api/auth/logout
-router.get('/logout', (req, res) => {
-  if (token) {
-    token.destroy(err => {
-      if (err) {
-        res.status(500).json({ message: 'Logout failed' });
-      } else {
-        res.status(200).json({ message: 'Thanks for visiting' });
-      }
-    });
-  } else {
-    res.status(200).json({ message: 'Thanks for visiting' });
-  }
-});
+// router.get('/logout', (req, res) => {
+//   if (token) {
+//     token.destroy(err => {
+//       if (err) {
+//         res.status(500).json({ message: 'Logout failed' });
+//       } else {
+//         res.status(200).json({ message: 'Thanks for visiting' });
+//       }
+//     });
+//   } else {
+//     res.status(200).json({ message: 'Thanks for visiting' });
+//   }
+// });
 
 function generateToken(user) {
     const payload = {
@@ -74,7 +74,7 @@ function generateToken(user) {
     };
   
     const options = {
-      expiresIn: "1d"
+      expiresIn: "2d"
     };
   
     return jwt.sign(payload, secrets.jwtSecret, options);
