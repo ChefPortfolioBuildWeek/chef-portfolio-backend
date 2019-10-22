@@ -27,18 +27,18 @@ function getBy(filter) {
       .first();
 }
   
-// function add(post) {
-//     return db('posts')
-//       .insert(post)
-//       .then(ids => {
-//         return getById(ids[0]);
-//     });
-// }
-async function add(post) {
-    const [id] = await db('posts').insert(post, 'id');
+function add(post) {
+    return db('posts')
+      .insert(post)
+      .then(ids => {
+        return getById(ids[0]);
+    });
+}
+// async function add(post) {
+//     const [id] = await db('posts').insert(post, 'id');
   
-    return db('posts');
-  }
+//     return db('posts');
+//   }
   
 function remove(id) {
     return db('posts')
