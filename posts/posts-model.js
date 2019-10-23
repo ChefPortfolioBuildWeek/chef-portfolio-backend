@@ -27,10 +27,10 @@ function getBy(filter) {
       .first();
 }
   
-function addPost(post) {
-    console.log('from model', post)
+function addPost(newpost) {
+    console.log('from model', newpost)
     return db('posts')
-      .insert(post, 'id')
+      .insert(newpost, 'id')
       .then(([id]) => {
         return getById(id);
     });
