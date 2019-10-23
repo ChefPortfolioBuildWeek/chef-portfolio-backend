@@ -17,9 +17,10 @@ router.get('/', (req, res) => {
 // /api/posts/create
 router.post('/create', restricted, (req, res) => {
     let post = req.body;
+    console.log('this is post', post)
     Posts.add(post)
       .then(info => {
-          console.log(info)
+        //   console.log(info)
         res.status(201).json({
           ...info
         });

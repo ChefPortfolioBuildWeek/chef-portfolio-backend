@@ -18,7 +18,7 @@ function getByUsername(username) {
 }
   
 function getById(id) {
-    return db('posts').where({ id });
+    return db('posts').where({ id }).first();
 }
   
 function getBy(filter) {
@@ -30,8 +30,8 @@ function getBy(filter) {
 function add(post) {
     return db('posts')
       .insert(post, 'id')
-      .then(ids => {
-        return getById(ids[0]);
+      .then(([id]) => {
+        return getById(id);
     });
 }
 // async function add(post) {
