@@ -38,11 +38,9 @@ function addPost(newpost) {
 }
 async function testPost(newpost) {
     console.log('from model', newpost)
-    return await db('posts')
+    const one = await db('posts')
       .insert(newpost, 'id')
-      .then((idr) => {
-        return getById(idr[0]);
-    });
+    return db('posts').where('id', one.id)
 }
 // async function add(post) {
 //     const [id] = await db('posts').insert(post, 'id');
