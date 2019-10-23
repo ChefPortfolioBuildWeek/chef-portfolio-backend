@@ -29,11 +29,9 @@ function getBy(filter) {
 }
   
 function addPost(newpost) {
-    console.log('from model', newpost)
+    // console.log('from model', newpost)
     return db('receipes')
-      .insert({"title": "test",
-      "category": "flknvlkadf",
-      "description": "cnlnsdc"}, 'id')
+      .insert(newpost)
       .then(([id]) => {
         return getById(id);
     });
