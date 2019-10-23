@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const db = require('./posts-model');
+
 const restricted = require('../auth/restricted-middleware');
 
 //get all posts
