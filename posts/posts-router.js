@@ -22,7 +22,7 @@ router.post('/create', (req, res) => {
       .then(info => {
         //   console.log(info)
         res.status(201).json({
-          ...info
+          info
         });
       })
       .catch(err => {
