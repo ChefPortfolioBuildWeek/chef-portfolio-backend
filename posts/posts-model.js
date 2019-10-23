@@ -3,6 +3,7 @@ const db = require('../database/dbConfig');
 module.exports = {
     getPosts,
     addPost,
+    testPost,
     getBy,
     getByUsername,
     remove,
@@ -31,6 +32,14 @@ function addPost(newpost) {
     console.log('from model', newpost)
     return db('receipes')
       .insert(newpost, 'id')
+      .then(([id]) => {
+        return getById(id);
+    });
+}
+function testPost(newpost) {
+    console.log('from model', newpost)
+    return db('posts')
+      .insert(newpost)
       .then(([id]) => {
         return getById(id);
     });

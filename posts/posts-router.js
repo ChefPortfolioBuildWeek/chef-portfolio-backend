@@ -30,6 +30,21 @@ router.post('/create', (req, res) => {
         res.status(500).json(err);
       });
 });
+//test
+router.post('/test', (req, res) => {
+  let myPost = req.body;
+  console.log('this is post', myPost)
+  Posts.testPost(myPost)
+    .then(info => {
+      //   console.log(info)
+      res.status(201).json({
+        ...info
+      });
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    });
+});
 
 //update a post
 // /api/posts/update/id
