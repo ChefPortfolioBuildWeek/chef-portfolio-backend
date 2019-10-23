@@ -28,6 +28,7 @@ function getBy(filter) {
 }
   
 function add(post) {
+    console.log('from model', post)
     return db('posts')
       .insert(post, 'id')
       .then(([id]) => {
