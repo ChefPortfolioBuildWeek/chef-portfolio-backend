@@ -4,10 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watch",
     "server": "nodemon index.js",
     "start": "node index.js"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ChefPortfolioBuildWeek/chef-portfolio-backend.git"
