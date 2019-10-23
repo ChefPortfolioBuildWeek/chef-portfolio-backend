@@ -41,6 +41,7 @@ function testPost(newpost) {
     return db('posts')
       .insert(newpost)
       .returning('*')
+      
       .then(([id]) => {
         return getById(id);
     });
