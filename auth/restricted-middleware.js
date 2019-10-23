@@ -17,8 +17,6 @@ module.exports = (req, res, next) => {
         // req.user = {username: decodedToken.username};
         req.decodedJwt = decodedToken;
         console.log("decoded token", req.decodedJwt);
-
-        
         next();
       }
     })
