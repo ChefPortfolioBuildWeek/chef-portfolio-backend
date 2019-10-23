@@ -40,7 +40,7 @@ async function testPost(newpost) {
     console.log('from model', newpost)
     const one = await db('posts')
       .insert(newpost, 'id')
-    return db('posts').where('id', one.id)
+    return db('posts')
 }
 // async function add(post) {
 //     const [id] = await db('posts').insert(post, 'id');
