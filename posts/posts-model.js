@@ -37,10 +37,9 @@ function addPost(newpost) {
     });
 }
 async function testPost(newpost) {
-    console.log('from model', newpost)
-    const one = await db('posts')
-      .insert(newpost, 'id')
-    return db('posts')
+    const [id] = await db('posts').insert(newpost, 'id');
+
+  return getById(id);
 }
 // async function add(post) {
 //     const [id] = await db('posts').insert(post, 'id');
