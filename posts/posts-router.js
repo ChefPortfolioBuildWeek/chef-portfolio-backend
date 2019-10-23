@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 router.post('/create', (req, res) => {
     let post = req.body;
     console.log('this is post', post)
-    Posts.add(post)
+    Posts.addPost(post)
       .then(info => {
         //   console.log(info)
         res.status(201).json({

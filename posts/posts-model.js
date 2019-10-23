@@ -2,7 +2,7 @@ const db = require('../database/dbConfig');
 
 module.exports = {
     getPosts,
-    add,
+    addPost,
     getBy,
     getByUsername,
     remove,
@@ -27,7 +27,7 @@ function getBy(filter) {
       .first();
 }
   
-function add(post) {
+function addPost(post) {
     console.log('from model', post)
     return db('posts')
       .insert(post, 'id')
