@@ -31,7 +31,7 @@ function getBy(filter) {
 function addPost(newpost) {
     console.log('from model', newpost)
     return db('receipes')
-      .insert(newpost, 'id')
+      .insert(newpost)
       .then(([id]) => {
         return getById(id);
     });
