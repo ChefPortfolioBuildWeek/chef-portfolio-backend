@@ -29,7 +29,7 @@ function getBy(filter) {
   
 function add(post) {
     return db('posts')
-      .insert(post)
+      .insert(post, 'id')
       .then(ids => {
         return getById(ids[0]);
     });
