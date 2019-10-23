@@ -31,9 +31,9 @@ function addPost(newpost) {
     console.log('from model', newpost)
     return db('receipes')
       .insert(newpost, 'id')
-    //   .then(([id]) => {
-    //     return getById(id);
-    // });
+      .then(([id]) => {
+        return getById(id);
+    });
 }
 // async function add(post) {
 //     const [id] = await db('posts').insert(post, 'id');
