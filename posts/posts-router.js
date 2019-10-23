@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const Posts = require('./posts-model');
+const db = require('./posts-model');
 const restricted = require('../auth/restricted-middleware');
 
 //get all posts
 router.get('/', (req, res) => {
-    Posts.getPosts()
+    db.getPosts()
     .then(post => {
         res.status(200).json(post);
     })
@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 router.post('/create', (req, res) => {
     let myPost = req.body;
     console.log('this is post', myPost)
-    Posts.addPost(myPost)
+    db.addPost(myPost)
       .then(info => {
         //   console.log(info)
         res.status(201).json({
@@ -36,7 +36,7 @@ router.put('/update/:id', restricted, (req, res) => {
     const id = req.params.id;
     const action = req.body;
   
-    Posts.update(id, action)
+    db.update(id, action)
       .then(updated => {
         res.status(200).json(updated);
       })
@@ -52,7 +52,7 @@ router.put('/update/:id', restricted, (req, res) => {
 router.get('/:username', restricted, (req, res) => {
     let username = req.params.username;
   
-    Posts.getByUsername(username)
+    db.getByUsername(username)
       .then(post => {
         res.status(201).send(post);
       })
@@ -66,7 +66,7 @@ router.get('/:username', restricted, (req, res) => {
 router.delete('/delete/:id', restricted, (req, res) => {
     let id = req.params.id;
   
-    Posts.remove(id)
+    db.remove(id)
       .then(post => {
         res.status(200).json({message: 'Post deleted'});
       })
