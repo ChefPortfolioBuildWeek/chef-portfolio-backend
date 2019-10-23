@@ -31,7 +31,9 @@ function getBy(filter) {
 function addPost(newpost) {
     console.log('from model', newpost)
     return db('receipes')
-      .insert(newpost)
+      .insert({"title": "test",
+      "category": "flknvlkadf",
+      "description": "cnlnsdc"})
       .then(([id]) => {
         return getById(id);
     });
