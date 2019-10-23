@@ -33,7 +33,7 @@ function addPost(newpost) {
     return db('receipes')
       .insert({"title": "test",
       "category": "flknvlkadf",
-      "description": "cnlnsdc"})
+      "description": "cnlnsdc"}, 'id')
       .then(([id]) => {
         return getById(id);
     });
