@@ -40,10 +40,8 @@ async function testPost(newpost) {
     console.log('from model', newpost)
     return await db('posts')
       .insert(newpost, 'id')
-      
-      
-      .then(([id]) => {
-        return getById(id);
+      .then((idr) => {
+        return getById(idr[0]);
     });
 }
 // async function add(post) {
