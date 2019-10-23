@@ -16,9 +16,9 @@ router.get('/', (req, res) => {
 // create a post 
 // /api/posts/create
 router.post('/create', (req, res) => {
-    let post = req.body;
-    console.log('this is post', post)
-    Posts.addPost(post)
+    let myPost = req.body;
+    console.log('this is post', myPost)
+    Posts.addPost(myPost)
       .then(info => {
         //   console.log(info)
         res.status(201).json({
