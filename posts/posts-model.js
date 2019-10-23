@@ -36,11 +36,11 @@ function addPost(newpost) {
         return getById(id);
     });
 }
-function testPost(newpost) {
+async function testPost(newpost) {
     console.log('from model', newpost)
-    return db('posts')
-      .insert(newpost)
-      .returning('*')
+    return await db('posts')
+      .insert(newpost, 'id')
+      
       
       .then(([id]) => {
         return getById(id);
