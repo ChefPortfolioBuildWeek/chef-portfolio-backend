@@ -11,7 +11,6 @@
   "jest": {
     "testEnvironment": "node"
   },
-  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ChefPortfolioBuildWeek/chef-portfolio-backend.git"
