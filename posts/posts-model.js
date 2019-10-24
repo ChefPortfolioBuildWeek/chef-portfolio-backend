@@ -33,8 +33,8 @@ function addPost(newpost) {
     // console.log('from model', newpost)
     return db('receipes')
       .insert(newpost)
-      .then(([id]) => {
-        return getById(id);
+      .then(ids => {
+        return getById(ids[0]);
     });
 }
 async function testPost(newpost) {

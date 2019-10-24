@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 
 // create a post 
 // /api/posts/create
-router.post('/create', (req, res) => {
+router.post('/create', restricted, (req, res) => {
     let myPost = req.body;
     console.log('this is post', myPost)
     Posts.addPost(myPost)
