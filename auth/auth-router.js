@@ -74,7 +74,7 @@ function generateToken(user) {
     };
   
     const options = {
-      expiresIn: "2d"
+      expiresIn: "4d"
     };
   
     return jwt.sign(payload, secrets.jwtSecret, options);
