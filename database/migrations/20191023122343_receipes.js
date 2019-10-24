@@ -1,17 +1,17 @@
 
-exports.up = function(knex) {
+exports.up = function(knex, Promise) {
     return knex.schema.createTable('receipes', tbl => {
         tbl.increments();
         tbl.string('title', 128).notNullable();
-        tbl.string('category', 128).notNullable();
-        tbl.text('description').notNullable();
-        tbl.string('imgURL');
-        tbl.string('username');
-        tbl.string('location');
+        tbl.json('category').notNullable();
+        tbl.text('description', 128).notNullable();
+        tbl.string('imgURL', 128);
+        tbl.string('username', 128);
+        tbl.string('location', 128);
 
     })
 };
 
-exports.down = function(knex) {
+exports.down = function(knex, Promise) {
     return knex.schema.dropTableIfExists('receipes'); 
 };

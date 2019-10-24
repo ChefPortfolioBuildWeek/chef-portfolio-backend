@@ -1,8 +1,7 @@
 
-exports.seed = function(knex) {
+exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('receipes').truncate()
-    .then(function () {
+  // return knex('receipes').truncate()
       // Inserts seed entries
       return knex('receipes').insert([
         {
@@ -14,5 +13,5 @@ exports.seed = function(knex) {
           location: 'Portland, OR'
        }
       ]);
-    });
+    
 };
