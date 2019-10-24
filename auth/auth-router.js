@@ -2,7 +2,7 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const secrets = require('../config/secrets')
-
+const restricted = require('../auth/restricted-middleware')
 const Users = require("../users/users-model.js");
 
 //register a chef!
@@ -52,19 +52,19 @@ router.post('/login', (req, res) => {
 
 //chef logout
 //api/auth/logout
-// router.get('/logout', (req, res) => {
-//   if (token) {
-//     token.destroy(err => {
-//       if (err) {
-//         res.status(500).json({ message: 'Logout failed' });
-//       } else {
-//         res.status(200).json({ message: 'Thanks for visiting' });
-//       }
-//     });
-//   } else {
-//     res.status(200).json({ message: 'Thanks for visiting' });
-//   }
-// });
+router.get('/logout', (req, res) => {
+  if (token) {
+    token.destroy(err => {
+      if (err) {
+        res.status(500).json({ message: 'Logout failed' });
+      } else {
+        res.status(200).json({ message: 'Thanks for visiting' });
+      }
+    });
+  } else {
+    res.status(200).json({ message: 'Thanks for visiting' });
+  }
+});
 
 function generateToken(user) {
     const payload = {
