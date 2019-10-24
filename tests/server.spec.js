@@ -93,5 +93,36 @@ describe('server.js', () => {
                 .expect(400)
         })
     })
+
+    //update a post
+    describe('update route', () => {
+        it('should return a newly updated post', () => {
+            return request(server)
+            .put('/api/posts/update/id')
+            .send(creds) 
+            .then(res => {
+                expect(res.body);
+            })
+        })
+    })
+
+    //delete a post
+    describe('delete route', () => {
+        it('should return status code 400 when not authorized', () => {
+            return request(server)
+              .delete('/api/posts/delete/id')
+              .then(res => {
+                expect(res.status).toBe(400);
+              });
+          });
+
+          it('should return status code 404 when post does not exist', () => {
+            return request(server)
+              .delete('/api/posts/delete/')
+              .then(res => {
+                expect(res.status).toBe(404);
+              });
+          });
+    })
 })
     

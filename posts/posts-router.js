@@ -74,21 +74,6 @@ router.get('/:username', restricted, (req, res) => {
       });
 });
 
-// delete post
-// /api/posts/delete/:id
-//router.delete('/delete/:id', restricted, (req, res) => {
-//     let id = req.params.id;
-  
-//     Posts.remove(id)
-//       .then(post => {
-//         res.status(200).json({message: 'Post deleted'});
-//       })
-//       .catch(err => {
-//         res.status(500).json({
-//           error: 'Post cannot be deleted'
-//         });
-//     });
-// });
 router.delete('/delete/:id', restricted, (req, res) => {
   const { id } = req.params;
   Posts.remove(id)
