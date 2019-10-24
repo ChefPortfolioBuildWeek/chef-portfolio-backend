@@ -7,7 +7,8 @@ module.exports = {
     getBy,
     getByUsername,
     remove,
-    update
+    update,
+    getById
 };
 
 function getPosts() {
