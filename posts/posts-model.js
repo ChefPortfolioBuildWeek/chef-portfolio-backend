@@ -32,7 +32,7 @@ function getBy(filter) {
 function addPost(newpost) {
     // console.log('from model', newpost)
     return db('receipes')
-      .insert(newpost)
+      .insert(newpost, 'id')
       .then(ids => {
         return getById(ids[0]);
     });
