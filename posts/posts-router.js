@@ -16,22 +16,7 @@ router.get('/', (req, res) => {
 
 // create a post 
 // /api/posts/create
-router.post('/create', (req, res) => {
-  let myPost = req.body;
-  console.log('this is post', myPost)
-  Posts.testPost(myPost)
-    .then(info => {
-      //   console.log(info)
-      res.status(201).json({
-        info
-      });
-    })
-    .catch(err => {
-      res.status(500).json(err);
-    });
-});
-//test
-router.post('/test', (req, res) => {
+router.post('/create', restricted, (req, res) => {
   let myPost = req.body;
   console.log('this is post', myPost)
   Posts.testPost(myPost)
