@@ -2,7 +2,6 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const secrets = require('../config/secrets')
-const restricted = require('../auth/restricted-middleware')
 const Users = require("../users/users-model.js");
 
 //register a chef!
@@ -23,8 +22,6 @@ router.post('/register', (req, res) => {
       res.status(500).json(error);
     });
 });
-
-
 
 //chef login
 //api/auth/login
