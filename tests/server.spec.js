@@ -54,9 +54,43 @@ describe('server.js', () => {
                     expect(res.body);
                 })
         })
-        it('should 500', () => {
-            return request(server).get('/users')
-                .expect(404)
+        it('should return 400 bad request', () => {
+            return request(server).get('/api/users')
+                .expect(400)
+        })
+    })
+
+    //create a post
+    describe('create route', () => {
+        it('should return a newly created post', () => {
+            return request(server)
+            .post('/api/posts/create')
+            // 
+            .then(res => {
+                expect(res.body);
+            })
+        })
+        it('is a JSON Object', () => {
+            return request(server)
+              .post('/api/posts/create')
+              .send(creds)
+              .then(res => {
+                expect(res.type).toMatch(/json/i)
+              });
+          });
+    })
+
+    //get post by username
+    describe('posts route', () => {
+        it('should return an array of objects', () => {
+            return request(server).get('/api/posts/username')
+                .then(res => {
+                    expect(res.body);
+                })
+        })
+        it('should return 400 bad request', () => {
+            return request(server).get('/api/posts/username')
+                .expect(400)
         })
     })
 })

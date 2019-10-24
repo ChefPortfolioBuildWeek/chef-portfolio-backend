@@ -74,21 +74,38 @@ router.get('/:username', restricted, (req, res) => {
       });
 });
 
-//delete post
+// delete post
 // /api/posts/delete/:id
-router.delete('/delete/:id', restricted, (req, res) => {
-    let id = req.params.id;
+//router.delete('/delete/:id', restricted, (req, res) => {
+//     let id = req.params.id;
   
-    Posts.remove(id)
-      .then(post => {
+//     Posts.remove(id)
+//       .then(post => {
+//         res.status(200).json({message: 'Post deleted'});
+//       })
+//       .catch(err => {
+//         res.status(500).json({
+//           error: 'Post cannot be deleted'
+//         });
+//     });
+// });
+router.delete('/delete/:id', restricted, (req, res) => {
+  const { id } = req.params;
+  Posts.remove(id)
+    .then(count => {
+      if (count > 0) {
         res.status(200).json({message: 'Post deleted'});
-      })
-      .catch(err => {
-        res.status(500).json({
-          error: 'Post cannot be deleted'
-        });
+      } else {
+        res
+          .status(404)
+          .json({ error: 'A post with provided ID does not exist' });
+      }
+    })
+    .catch(error => {
+      res.status(500).json({
+        error: 'This post could not be removed'
+      });
     });
 });
-  
 
 module.exports = router;
