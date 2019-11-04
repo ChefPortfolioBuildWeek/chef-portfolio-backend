@@ -30,19 +30,7 @@ router.post('/create', restricted, (req, res) => {
       res.status(500).json(err);
     });
 });
-// router.get("/logout", (req, res) => {
-//   if (token) {
-//     token.destroy(err => {
-//       if (err) {
-//         res.status(500).json({ message: "Logout failed" });
-//       } else {
-//         res.status(200).json({ message: "Bye, thanks for visiting" });
-//       }
-//     });
-//   } else {
-//     res.status(200).json({ message: "Bye, thanks for visiting" });
-//   }
-// });
+
 //update a post
 // /api/posts/update/id
 router.put('/update/:id', restricted, (req, res) => {
